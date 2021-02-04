@@ -1,0 +1,23 @@
+@import "../variables";
+
+.app {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+}
+
+.app__sidebar {
+	width: 328px;
+	max-width: 25%;
+	flex-grow: 1;
+	padding: 20px;
+	background: $linear-dark;
+	background: url(~assets/img/abb-bg-main.jpg) left top / cover no-repeat;
+	position: relative;
+
+	.burger {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+}

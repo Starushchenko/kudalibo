@@ -42,9 +42,21 @@ body {
 }
 
 a {
-	padding-bottom: 2px;
 	color: $accent-color;
 	text-decoration: none;
+	transition: 0.3s;
+
+	path {
+		transition: 0.3s;
+	}
+}
+
+button {
+	transition: 0.3s;
+
+	path {
+		transition: 0.3s;
+	}
 }
 
 /**::-webkit-scrollbar-track {

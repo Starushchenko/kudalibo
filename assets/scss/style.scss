@@ -1,5 +1,9 @@
+// Global project vendors
 @import '_fonts.scss';
 @import '_mixins.scss';
 @import '_reset.scss';
 @import '_scaffolding.scss';
 @import '_variables.scss';
+
+// BEM-blocks used outside of components
+@import 'blocks/app';
