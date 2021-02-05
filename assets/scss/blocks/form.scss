@@ -13,6 +13,14 @@
 		width: 100%;
 		display: block;
 
+		/* Prevent autofill */
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active  {
+			-webkit-box-shadow: 0 0 0 30px white inset !important;
+		}
+
 		@include input-placeholder {
 			font-family: 'SF Pro Display', Arial, sans-serif;
 			font-size: 16px;
@@ -179,6 +187,7 @@
 
 	&__rules-agree {
 		display: flex;
+		justify-content: center;
 		align-items: center;
 
 		input {
@@ -189,10 +198,17 @@
 			font-size: 12px;
 			font-weight: 400;
 			vertical-align: middle;
-			padding-top: 3px;
+			padding-top: 2px;
+			position: relative;
 
 			a {
-				text-decoration: underline;
+				color: $light;
+				border-bottom: 1px solid $light;
+
+				&:hover, &:focus {
+					color: $accent-color;
+					border-color: $accent-color;
+				}
 			}
 
 			&:before {
@@ -205,7 +221,27 @@
 				vertical-align: middle;
 				margin-right: 8px;
 				background: none;
+				margin-top: -2px;
+				cursor: pointer;
 			}
+		}
+
+		input + label:after {
+			content: '';
+			position: absolute;
+			display: block;
+			background: url(~assets/img/mark-small-accent.svg) center no-repeat;
+			transform: scale(0);
+			transition: 0.3s;
+			width: 16px;
+			height: 16px;
+			top: 0;
+			left: 0;
+		}
+
+		input:checked + label:after {
+			content: '';
+			transform: scale(1);
 		}
 
 		&--white {

@@ -1,0 +1,44 @@
+.layout-enter-active, .layout-leave-to {
+	transition: .4s;
+}
+.layout-enter {
+	opacity: 0;
+	transform: scale(1.05);
+}
+
+.layout-leave-to {
+	opacity: 0;
+	transform: scale(1.05);
+}
+
+
+.fadeToRight-enter-active, .fadeToRight-leave-to {
+	transition: .5s;
+}
+.fadeToRight-enter {
+	opacity: 0;
+	height: 0;
+	transform: translateX(50px);
+}
+
+.fadeToRight-leave-to {
+	opacity: 0;
+	height: 0;
+	transform: translateX(50px);
+}
+
+
+.fadeUp-enter-active, .fadeUp-leave-to {
+	transition: .5s;
+}
+.fadeUp-enter {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.fadeUp-leave-to {
+	opacity: 0;
+	height: 0;
+	visibility: hidden;
+}
