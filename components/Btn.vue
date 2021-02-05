@@ -15,7 +15,7 @@
 	
 	.btn {
 		display: inline-flex;
-		padding: 15px 25px;
+		padding: 13px 25px;
 		background: $accent-color;
 		color: $light;
 		justify-content: center;
@@ -40,6 +40,13 @@
 			background: $main-text-color;
 			box-shadow: $dark-btn-shadow;
 			padding: 12px 25px;
+			height: 56px;
+			white-space: nowrap;
+		}
+		
+		&--white {
+			background: $light;
+			color: $accent-color;
 		}
 		
 		&--no-text {

@@ -1,0 +1,54 @@
+@import "../variables";
+
+.tab-radios {
+	display: flex;
+	background: $light;
+	border-radius: 6px;
+
+	&__item {
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		label {
+			flex-grow: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			padding: 12px 25px;
+			transition: 0.3s;
+			font-size: 16px;
+			font-weight: 500;
+			color: $text-gray-color;
+
+			&:hover {
+				box-shadow: $pressed-btn-shadow;
+			}
+		}
+
+		input:checked + label {
+			background: $accent-color;
+			color: $light;
+			height: calc(100% + 4px);
+			box-shadow: $accent-btn-shadow;
+		}
+
+		input:checked:hover + label {
+			box-shadow: none;
+		}
+
+		&:first-of-type {
+			label {
+				border-radius: 6px 0 0 6px;
+			}
+		}
+
+		&:last-of-type {
+			label {
+				border-radius: 0 6px 6px 0;
+			}
+		}
+	}
+}

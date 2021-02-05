@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <transition name="layout" mode="out-in">
     <h1>мобильный</h1>
     <Nuxt />
-  </div>
+  </transition>
 </template>
 
 <style>

@@ -1,3 +1,5 @@
 <template>
-    <Nuxt />
+    <transition name="layout" mode="out-in">
+        <Nuxt />
+    </transition>
 </template>

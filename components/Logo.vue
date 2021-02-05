@@ -1,5 +1,5 @@
 <template>
-	<a class="logo" @click="goTo('/')">
+	<a class="logo" @click="goTo('/about')" @mouseover.self="highlightLogo" @mouseleave.self="finishHighlightLogo">
 		<svg class="logo__image" width="150" height="34" viewBox="0 0 150 34" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#logo-orange)">
 				<path d="M13.3397 0.178741L4.49102 21.2958L6.84769 0.178741H3.55724L0 31.9929H3.29045L8.1283 20.4468L12.0057 31.9929H15.2961L9.96028 16.0858L16.6301 0.178741H13.3397Z" fill="#F2994A"/>
@@ -28,6 +28,14 @@
 			goTo(link) {
 				this.$router.push(link);
 			},
+			highlightLogo(event) {
+				event.target.classList.add('logo--hovered');
+				event.target.classList.remove('logo--outhovered');
+			},
+			finishHighlightLogo(event) {
+				event.target.classList.remove('logo--hovered');
+				event.target.classList.add('logo--outhovered');
+			}
 		}
 	}
 </script>
@@ -39,6 +47,7 @@
 		display: inline-flex;
 		flex-direction: column;
 		cursor: pointer;
+		align-self: flex-start;
 		
 		&__desc {
 			color: $text-gray-color;
@@ -54,6 +63,228 @@
 			&.white {
 				color: $light;
 			}
+		}
+	}
+	
+	// Описание анимаций
+	.logo {
+		path {
+			transition: 0.6s;
+			fill: $accent-color;
+		}
+		&.logo--hovered {
+			path:first-of-type {
+				animation: logoPathFilling 0.3s 1 linear;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(5) {
+				animation: logoPathFilling 0.3s 1 linear 0.1s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(4) {
+				animation: logoPathFilling 0.3s 1 linear 0.15s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(3) {
+				animation: logoPathFilling 0.3s 1 linear 0.2s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(2) {
+				animation: logoPathFilling 0.3s 1 linear 0.25s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(6) {
+				animation: logoPathFilling 0.3s 1 linear 0.3s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(7) {
+				animation: logoPathFilling 0.3s 1 linear 0.35s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(8) {
+				animation: logoPathFilling 0.3s 1 linear 0.4s;
+				animation-fill-mode: forwards;
+			}
+		}
+		&.logo--outhovered {
+			path {
+				fill: $accent-alt-light;
+			}
+			
+			path:first-of-type {
+				animation: logoPathFillingBack 0.3s 1 linear;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(5) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.1s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(4) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.15s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(3) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.2s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(2) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.25s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(6) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.3s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(7) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.35s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(8) {
+				animation: logoPathFillingBack 0.3s 1 linear 0.4s;
+				animation-fill-mode: forwards;
+			}
+		}
+		&.logo--white {
+			path {
+				fill: $light;
+			}
+		}
+		&.logo--white.logo--hovered {
+			path:first-of-type {
+				animation: logoWhitePathFilling 0.3s 1 linear;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(5) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.1s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(4) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.15s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(3) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.2s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(2) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.25s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(6) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.3s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(7) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.35s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(8) {
+				animation: logoWhitePathFilling 0.3s 1 linear 0.4s;
+				animation-fill-mode: forwards;
+			}
+		}
+		&.logo--white.logo--outhovered {
+			path {
+				fill: $accent-alt-light;
+			}
+			
+			path:first-of-type {
+				animation: logoWhitePathFillingBack 0.3s 1 linear;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(5) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.1s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(4) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.15s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(3) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.2s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(2) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.25s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(6) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.3s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(7) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.35s;
+				animation-fill-mode: forwards;
+			}
+			
+			path:nth-of-type(8) {
+				animation: logoWhitePathFillingBack 0.3s 1 linear 0.4s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+	
+	@keyframes logoPathFilling {
+		0% {
+			fill: $accent-color;
+		}
+		
+		100% {
+			fill: $accent-alt-light;
+		}
+	}
+	@keyframes logoPathFillingBack {
+		0% {
+			fill: $accent-alt-light;
+		}
+		
+		100% {
+			fill: $accent-color;
+		}
+	}
+	@keyframes logoWhitePathFilling {
+		0% {
+			fill: $light;
+		}
+		
+		100% {
+			fill: $accent-alt-light;
+		}
+	}
+	@keyframes logoWhitePathFillingBack {
+		0% {
+			fill: $accent-alt-light;
+		}
+		
+		100% {
+			fill: $light;
 		}
 	}
 </style>
