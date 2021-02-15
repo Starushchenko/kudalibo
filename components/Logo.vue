@@ -1,5 +1,5 @@
 <template>
-	<a class="logo" @click="goTo('/about')" @mouseover.self="highlightLogo" @mouseleave.self="finishHighlightLogo">
+	<a class="logo" @click="goTo('/')" @mouseover.self="highlightLogo" @mouseleave.self="finishHighlightLogo">
 		<svg class="logo__image" width="150" height="34" viewBox="0 0 150 34" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#logo-orange)">
 				<path d="M13.3397 0.178741L4.49102 21.2958L6.84769 0.178741H3.55724L0 31.9929H3.29045L8.1283 20.4468L12.0057 31.9929H15.2961L9.96028 16.0858L16.6301 0.178741H13.3397Z" fill="#F2994A"/>

@@ -24,7 +24,7 @@
 		box-shadow: $accent-btn-shadow;
 		border-radius: 6px;
 		font-size: 18px;
-		font-weight: 500;
+		font-weight: 400;
 		cursor: pointer;
 		outline: none;
 		
@@ -40,7 +40,7 @@
 			background: $main-text-color;
 			box-shadow: $dark-btn-shadow;
 			padding: 12px 25px;
-			height: 56px;
+			height: 50px;
 			white-space: nowrap;
 		}
 		
