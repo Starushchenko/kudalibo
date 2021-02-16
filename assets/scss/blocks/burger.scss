@@ -1,9 +1,56 @@
 @import "../variables";
 
 .burger {
-	transition: 0.5s;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.3s;
+
+	svg {
+		width: 28px;
+		height: 28px;
+	}
+
+	rect, circle {
+		transition: 0.3s;
+	}
+
+	path {
+		opacity: 0;
+		transform: translate(3px, -1px) rotate(45deg);
+	}
 
 	&--active {
+		rect:first-child {
+			transform: rotate(45deg) translate(3px, -5px);
+			width: 28px;
+			transition: 0.3s;
+			opacity: 0;
+		}
 
+		rect:nth-child(2) {
+			transform: rotate(
+					-45deg
+			) translate(-11px, 6px);
+			width: 28px;
+			transition: 0.3s;
+			opacity: 0;
+		}
+
+		rect:nth-child(3) {
+			opacity: 0;
+			transition: 0.3s;
+		}
+
+		path {
+			opacity: 1;
+			transform: translate(3px, -1px);
+		}
+
+		circle {
+			opacity: 0;
+			transition: 0.3s;
+		}
 	}
 }

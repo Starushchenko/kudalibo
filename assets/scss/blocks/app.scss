@@ -16,6 +16,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		z-index: 3;
+		background: url(~assets/img/abb-bg-main.jpg) left top / cover no-repeat;
 
 		.burger {
 			position: absolute;
@@ -140,7 +141,7 @@
 		font-size: 24px;
 		margin-bottom: 12px;
 		color: $light;
-		margin-top: 33px;
+		margin-top: 29px;
 	}
 
 	&__back {
@@ -169,6 +170,12 @@
 
 		.static-menu {
 			opacity: 0;
+			visibility: hidden;
+		}
+
+		.site-menu {
+			visibility: visible;
+			opacity: 1;
 		}
 
 		.app__body:before {
@@ -180,7 +187,7 @@
 		}
 
 		.app__sidebar {
-			background: none;
+			//background: none;
 		}
 	}
 }
