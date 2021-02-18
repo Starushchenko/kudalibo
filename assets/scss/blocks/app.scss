@@ -18,6 +18,9 @@
 		z-index: 3;
 		background: url(~assets/img/abb-bg-main.jpg) left top / cover no-repeat;
 
+		overflow: auto;
+		@include scrollbar(5px, $accent-color);
+
 		.burger {
 			position: absolute;
 			top: 20px;

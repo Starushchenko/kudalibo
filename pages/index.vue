@@ -6,20 +6,20 @@
 			<!-- Иконка меню -->
 			<Btn class="burger btn btn--dark btn--no-text btn--rounded" :class="{'burger--active': menuOpened}" @click.native="menuOpened = !menuOpened">
 				<div slot="icon">
-						<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<rect y="2" width="25" height="2" rx="1" fill="white"/>
-							<rect y="10" width="25" height="2" rx="1" fill="white"/>
-							<rect y="18" width="20" height="2" rx="1" fill="white"/>
-							<circle cx="25" cy="3" r="3" fill="#FF9332"/>
-							<path d="M1.66675 1.66669L11.0001 11M11.0001 11L20.3334 20.3334M11.0001 11L20.3334 1.66669M11.0001 11L1.66675 20.3334" stroke="url(#burger-linear)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-							<defs>
-								<linearGradient id="burger-linear" x1="11.0001" y1="1.66669" x2="11.0001" y2="20.3334" gradientUnits="userSpaceOnUse">
-									<stop stop-color="white"/>
-									<stop offset="0.760417" stop-color="#DD8D46"/>
-									<stop offset="1" stop-color="#DD8D46"/>
-								</linearGradient>
-							</defs>
-						</svg>
+					<svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect y="2" width="25" height="2" rx="1" fill="white"/>
+						<rect y="10" width="25" height="2" rx="1" fill="white"/>
+						<rect y="18" width="20" height="2" rx="1" fill="white"/>
+						<circle cx="25" cy="3" r="3" fill="#FF9332"/>
+						<path d="M1.66675 1.66669L11.0001 11M11.0001 11L20.3334 20.3334M11.0001 11L20.3334 1.66669M11.0001 11L1.66675 20.3334" stroke="url(#burger-linear)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+						<defs>
+							<linearGradient id="burger-linear" x1="11.0001" y1="1.66669" x2="11.0001" y2="20.3334" gradientUnits="userSpaceOnUse">
+								<stop stop-color="white"/>
+								<stop offset="0.760417" stop-color="#DD8D46"/>
+								<stop offset="1" stop-color="#DD8D46"/>
+							</linearGradient>
+						</defs>
+					</svg>
 				
 				</div>
 			</Btn>
@@ -90,7 +90,7 @@
 			</transition>
 			
 			<!--	Форма заказа	-->
-			<form action="" class="form form--app-order">
+			<form action="" class="form form--app-order" ref="orderForm" :class="{'points-draggable': orderData.points.length > 2}">
 				<fieldset class="form__set">
 					<div class="tab-radios form__tab-radios">
 						<div class="tab-radios__item">
@@ -107,16 +107,18 @@
 				<transition name="fadeToRight">
 					<div key="transfer" v-if="orderData.orderType == 'transfer'">
 						<fieldset class="form__set">
-							<div class="form__group form__group--place-g" data-place-index="1">
-								<label for="place1">Откуда</label>
-								<input type="text" name="place1" id="place1" v-model="orderData.cityFrom" placeholder="Введите адрес начала маршрута">
-							</div>
-							<div class="form__group form__group--place-o" data-place-index="1">
-								<label for="place2">Куда</label>
-								<input type="text" name="place2" id="place2" v-model="orderData.cityTo" placeholder="Введите адрес конца маршрута">
+							<div v-for="(point, index) in orderData.points" class="form__group form__group--place-g form__point-field">
+								<label :for="index">
+									<span>Точка маршрута</span>
+								</label>
+								<input aria-label="Адрес" type="text" :name="index" :id="index" :data-coords="point.coords" v-model="point.name" placeholder="Введите адрес">
+								<div class="form__point-btns">
+									<button class="form__drag-btn js_point-drag" type="button" title="Зажмите и перетаскивайте">Зажмите и перетаскивайте</button>
+									<button class="form__delete-btn js_point-delete" type="button" title="Удалить точку маршрута">Удалить точку маршрута</button>
+								</div>
 							</div>
 							
-							<Btn class="btn btn--white form__btn" type="button">
+							<Btn class="btn btn--white form__btn" type="button" @click.native="addPoint">
 								<svg slot="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M9 2.25V9M9 15.75V9M9 9H15.75M9 9H2.25" stroke="#F2994A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
@@ -159,7 +161,7 @@
 					
 					<div key="taxi" v-else="orderData.orderType == 'taxi'">
 						<fieldset class="form__set">
-							<div class="form__group form__group--place-g" data-place-index="1">
+							<div class="form__group">
 								<label for="city">Выберите ваш город</label>
 								<select v-model="orderData.city" name="city" id="city">
 									<option value="1">Севастополь</option>
@@ -169,13 +171,12 @@
 									<option value="5">Керчь</option>
 								</select>
 							</div>
-							<div class="form__group form__group--place-g" data-place-index="1">
-								<label for="place1">Откуда</label>
-								<input type="text" name="place1" id="place1" v-model="orderData.cityFrom" placeholder="Введите адрес начала маршрута">
-							</div>
-							<div class="form__group form__group--place-o" data-place-index="1">
-								<label for="place2">Куда</label>
-								<input type="text" name="place2" id="place2" v-model="orderData.cityTo" placeholder="Введите адрес конца маршрута">
+							
+							<div v-for="(point, index) in orderData.points" class="form__group form__group--place-g form__point-field">
+								<label :for="index">
+									<span>Точка маршрута</span>
+								</label>
+								<input aria-label="Адрес" type="text" :name="index" :id="index" :data-coords="point.coords" v-model="point.name" placeholder="Введите адрес">
 							</div>
 							
 							<Btn class="btn btn--white form__btn" type="button">
@@ -289,12 +290,21 @@
 			ValidationObserver,*/
 		},
 		data: () => ({
+			authorized: true,
 			// Данные заказа
 			orderData: {
 				orderType: "transfer", // transfer or taxi
+				points: [
+					{
+						name: '',
+						coords: [44.609662, 33.521640],
+					},
+					{
+						name: '',
+						coords: [44.948335, 34.095123],
+					},
+				],
 				city: '',
-				cityFrom: '',
-				cityTo: '',
 				date: '',
 				phone: '',
 				childSeat: false,
@@ -324,6 +334,14 @@
 				this.settingsShown = (this.settingsShown !== true);
 				this.modalBackShown = (this.modalBackShown !== true);
 			},
-		}
+			addPoint: function () {
+				this.orderData.points.push({
+					name: '',
+					coords: [],
+				});
+
+				(this.orderData.points.length > 2) ? this.$refs.orderForm.classList.add('points-draggable') : this.$refs.orderForm.classList.remove('points-draggable');
+			},
+		},
 	}
 </script>

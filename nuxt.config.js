@@ -45,6 +45,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vee-validate",
+    "~/plugins/vuedraggable",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -76,13 +77,12 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
-	//
 	router: {
 		middleware: ['mobile']
 	},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ["vee-validate/dist/rules"],
+    transpile: ["vee-validate/dist/rules", "vuedraggable"],
   }
 }
