@@ -1,7 +1,9 @@
 <template>
   <transition name="layout" mode="out-in">
-    <h1>декстоп</h1>
-    <Nuxt />
+    <div>
+      <h1>мобиле</h1>
+      <Nuxt />
+    </div>
   </transition>
 </template>
 

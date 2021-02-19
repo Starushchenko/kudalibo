@@ -46,6 +46,7 @@ export default {
   plugins: [
     "~/plugins/vee-validate",
     "~/plugins/vuedraggable",
+    "~/plugins/vue2-datepicker",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

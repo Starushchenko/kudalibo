@@ -65,6 +65,10 @@
 			margin-top: -1px;
 		}
 
+		& + .form__points {
+			margin-top: -1px;
+		}
+
 		&--place-g {
 			&:after {
 				background: url("~assets/img/pin-icon-gray.svg") center no-repeat;
@@ -98,6 +102,17 @@
 		&--date {
 			&:after {
 				background: url("~assets/img/calendar-icon-gray.svg") center no-repeat;
+
+				&:hover {
+					transform: scale(1.2);
+					cursor: pointer;
+				}
+			}
+		}
+
+		&--select {
+			&:after {
+				background: url("~assets/img/down-icon-black.svg") center no-repeat;
 			}
 		}
 
@@ -117,6 +132,8 @@
 			cursor: pointer;
 			color: $main-text-color;
 			text-align: left;
+			position: relative;
+			z-index: 2;
 
 			.form__label-desc {
 				color: $text-gray-color;
@@ -134,7 +151,7 @@
 				position: absolute;
 				display: inline-block;
 				right: 15px;
-				top: 15px;
+				top: 7px;
 				width: 40px;
 				height: 20px;
 				transform: none;
@@ -149,7 +166,7 @@
 				position: absolute;
 				display: inline-block;
 				right: 36px;
-				top: 16px;
+				top: 8px;
 				vertical-align: middle;
 				width: 18px;
 				height: 18px;
@@ -367,5 +384,37 @@
 			opacity: 1;
 			visibility: visible;
 		}
+	}
+}
+
+.form__point-field {
+
+	&.sortable-ghost {
+		background: $gray-5;
+		border: 2px dashed $accent-color;
+		z-index: 2;
+		position: relative;
+		transform: scale(1.05);
+		padding: 9px 0 4px;
+
+		label {
+			padding: 0 15px;
+		}
+		input {
+			background: $gray-5;
+			padding: 8px 15px;
+		}
+		.form__point-btns {
+			right: 12px;
+			bottom: 11px;
+		}
+	}
+}
+
+.form__points {
+	overflow: hidden;
+
+	& + .form__btn {
+		margin-top: -1px;
 	}
 }

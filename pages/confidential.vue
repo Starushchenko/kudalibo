@@ -10,7 +10,7 @@
 			<draggable tag="ul" :list="list" class="list-group" handle=".handle">
 				<li
 						class="list-group-item"
-						v-for="(element, idx) in list"
+						v-for="(element, index) in list"
 						:key="element.name"
 				>
 					<i class="fa fa-align-justify handle"></i>
@@ -19,7 +19,7 @@
 					
 					<input type="text" class="form-control" v-model="element.text" />
 					
-					<i class="fa fa-times close" @click="removeAt(idx)"></i>
+					<i class="fa fa-times close" @click="removePoint(index)"></i>
 				</li>
 			</draggable>
 		</div>
@@ -54,8 +54,8 @@
 			}
 		},
 		methods: {
-			removeAt(idx) {
-				this.list.splice(idx, 1);
+			removePoint(index) {
+				this.list.splice(index, 1);
 			},
 			add: function() {
 				id++;

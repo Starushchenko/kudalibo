@@ -156,3 +156,26 @@ textarea {
 		bottom: -80px;
 	}
 }
+
+.mx-datepicker {
+	position: unset;
+	display: unset;
+	width: unset;
+
+	.mx-input-wrapper {
+		position: unset;
+	}
+	.mx-input {
+		box-shadow: none;
+		border-radius: unset;
+	}
+	.mx-icon-calendar {
+		display: none;
+	}
+	.mx-datepicker-popup {
+		top: 68px !important;
+	}
+}
+.mx-calendar-content .cell.disabled {
+	background: $light;
+}

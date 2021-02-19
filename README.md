@@ -1,6 +1,11 @@
-# kudalibo-front
+# Kudalibo Front
 
-## Build Setup
+## Библиотеки в проекте
+- **Валидация форм** - [vee-validate](https://vee-validate.logaretm.com/v3)
+- **Управление drag** - [vue.draggable](https://sortablejs.github.io/Vue.Draggable/)
+- **Datetime-picker** - [vue2-datepicker](https://mengxiong10.github.io/vue2-datepicker/index.html)
+
+## Команды
 
 ```bash
 # install dependencies
