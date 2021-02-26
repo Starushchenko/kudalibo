@@ -77,6 +77,7 @@
 
 	export default {
 		props,
+		L,
 		name: 'LRoutingMachine',
 		data() {
 			return {
@@ -129,5 +130,5 @@
 </script>
 
 <style>
-	/*@import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css';*/
+	@import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css';
 </style>

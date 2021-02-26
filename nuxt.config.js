@@ -44,9 +44,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // "~/plugins/LRoutingMachine.vue",
     "~/plugins/vee-validate",
     "~/plugins/vuedraggable",
     "~/plugins/vue2-datepicker",
+    { src: '~/plugins/vue-js-modal', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -62,6 +64,7 @@ export default {
     '@nuxtjs/style-resources',
     '@aceforth/nuxt-optimized-images',
     'nuxt-leaflet',
+    'cookie-universal-nuxt',
   ],
 
   optimizedImages: {

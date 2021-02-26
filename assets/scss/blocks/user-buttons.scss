@@ -11,3 +11,70 @@
 		}
 	}
 }
+
+.user-buttons__dropdown {
+	position: relative;
+
+	&:hover {
+		.user-buttons__dropdown-handler {
+
+			border-radius: 28px 28px 0px 0px;
+		}
+		.user-buttons__dropdown-content {
+			opacity: 1;
+			transform: none;
+			visibility: visible;
+			z-index: 1;
+		}
+	}
+}
+
+.user-buttons__dropdown-content {
+	background: $light;
+	box-shadow: $card-shadow;
+	border-radius: 0px 0px 28px 28px;
+	transition: .5s;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	z-index: 0;
+
+	opacity: 0;
+	transform: rotateX(-45deg);
+	transform-origin: top;
+	visibility: hidden;
+}
+
+.user-buttons__dropdown-item {
+	padding: 12px 25px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid $gray-4;
+	transition: 0.3s;
+	cursor: pointer;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	path {
+		transition: 0.3s;
+	}
+
+	svg {
+		margin-right: 10px;
+	}
+
+	&:hover {
+		color: $accent-color;
+
+		path[stroke] {
+			stroke: $accent-color
+		}
+
+		path[fill] {
+			fill: $accent-color
+		}
+	}
+}

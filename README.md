@@ -4,6 +4,9 @@
 - **Валидация форм** - [vee-validate](https://vee-validate.logaretm.com/v3)
 - **Управление drag** - [vue.draggable](https://sortablejs.github.io/Vue.Draggable/)
 - **Datetime-picker** - [vue2-datepicker](https://mengxiong10.github.io/vue2-datepicker/index.html)
+- **Модуль установки / получения cookies** - [cookie-universal-nuxt](https://www.npmjs.com/package/cookie-universal-nuxt)
+- **Модальные окна** - [vue-js-modal](https://euvl.github.io/vue-js-modal/)
+
 
 ## Команды
 

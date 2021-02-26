@@ -206,7 +206,7 @@
 						<fieldset class="form__set">
 							<div class="form__group form__group--date">
 								<label for="order-date">Дата / время поездки</label>
-								<date-picker :append-to-body="false" @open="test" :default-value="new Date()" title-format="DD.MM.YYYY" :clearable="false" :confirm="true" confirm-text="Подтвердить" :disabled-date="disabledBeforeTodayAndAfterAWeek" :minute-step="5" format="DD.MM.YYYY HH:mm" v-model="orderData.date" name="order-date" id="order-date" type="datetime" placeholder="Выберите дату и время поездки"></date-picker>
+								<date-picker :append-to-body="false" :default-value="new Date()" title-format="DD.MM.YYYY" :clearable="false" :confirm="true" confirm-text="Подтвердить" :disabled-date="disabledBeforeTodayAndAfterAWeek" :minute-step="5" format="DD.MM.YYYY HH:mm" v-model="orderData.date" name="order-date" id="order-date" type="datetime" placeholder="Выберите дату и время поездки"></date-picker>
 							</div>
 							<div class="form__group">
 								<label for="order-tel">Номер телефона</label>
@@ -245,14 +245,17 @@
 				</ValidationProvider>
 			</ValidationObserver>-->
 			
+			<!--	Копирайт	-->
 			<Copyright class="copyright--white app__copyright"/>
 		</div>
 		
 		<div class="app__body">
 			<header class="header">
 				
+				<!--	Меню по статическим страницам	-->
 				<StaticMenu/>
 				
+				<!--	Интерактивные кнопки для авторизации / перехода по разделам ЛК	-->
 				<div class="user-buttons">
 					<Btn class="btn btn--dark btn--rounded">
 						<svg slot="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +266,7 @@
 						<span slot="text">+ 7 978 282 82 82</span>
 					</Btn>
 					
-					<div class="user-buttons__dropdown">
+					<div v-if="authorized" class="user-buttons__dropdown">
 						<Btn class="btn btn--dark btn--rounded user-buttons__dropdown-handler">
 							<svg slot="icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<ellipse cx="12.1202" cy="6.5" rx="4" ry="4.5" stroke="white" stroke-width="1.8"/>
@@ -308,9 +311,17 @@
 							</ul>
 						</div>
 					</div>
+					<Btn v-else class="btn btn--dark btn--rounded" @click.native="$modal.show('example')">
+						<svg slot="icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<ellipse cx="12.1202" cy="6.5" rx="4" ry="4.5" stroke="white" stroke-width="1.8"/>
+							<path d="M20.1202 19C20.1202 22.5 16.1202 21.5 12.1202 21.5C8.12024 21.5 4.12024 22.5 4.12024 19C4.12024 17 7.70196 14.5 12.1202 14.5C16.5385 14.5 20.1202 17 20.1202 19Z" stroke="#DD8D46" stroke-width="1.8"/>
+						</svg>
+						<span slot="text">Войти / Регистрация</span>
+					</Btn>
 				</div>
 			</header>
 			
+			<!--	Карта для отрисовки маршрута	-->
 			<div class="app-map app__map">
 				<client-only>
 					<l-map :zoom=zoom :center="[center.lat,center.lng]">
@@ -321,14 +332,20 @@
 			</div>
 			
 			<div class="order-info-card"></div>
-			<div class="app__banner"></div>
+				<!--	Баннер мобильного приложения	-->
+				<MobAppBanner class="app__banner"/>
 			
 			<transition name="fadeToRight">
+				<!--	Полноэкранное меню по приложению	-->
 				<SiteMenu/>
 			</transition>
 			
+			<!--	Тёмный фон для выделения меню	-->
 			<div class="app__back" :class="{'app__back--active': modalBackShown}"></div>
 		</div>
+		
+		<!--	Глобальные модальные окна приложения	-->
+		<GlobalModals/>
 	</div>
 </template>
 
@@ -346,7 +363,9 @@
 			ValidationObserver,*/
 		},
 		data: () => ({
-			authorized: true,
+			// Проверка авторизации пользователя
+			authorized: false,
+			
 			// Данные заказа
 			orderData: {
 				orderType: "transfer", // transfer or taxi
@@ -384,15 +403,17 @@
 			zoom: 9,
 			center: {lat: 45.2500, lng: 34.506},
 			waypoints: [
-				{lat: 45.7436056, lng: 2.5304153},
-				{lat: 38.7436056, lng: -0.131281}
+				{lat: 44.607231, lng: 33.526968},
+				{lat: 45.036015, lng: 33.982251},
 			]
 		}),
 		methods: {
+			// Показать/скрыть дополнительные опции заказа
 			switchOrderSettings: function () {
 				this.settingsShown = (this.settingsShown !== true);
 				this.modalBackShown = (this.modalBackShown !== true);
 			},
+			// Добавить точку к маршруту
 			addPoint: function () {
 				this.orderData.points.push({
 					name: '',
@@ -401,10 +422,10 @@
 
 				(this.orderData.points.length > 2) ? this.$refs.orderForm.classList.add('points-draggable') : this.$refs.orderForm.classList.remove('points-draggable');
 			},
+			// Удалить точку из маршрута
 			removePoint(index) {
 				this.orderData.points.splice(index, 1);
 			},
-
 			// Отключение datepicker'а для прошедших дат и для дат больше 10 дней
 			disabledBeforeTodayAndAfterAWeek(date) {
 				const today = new Date();
@@ -412,9 +433,6 @@
 
 				return date < today || date > new Date(today.getTime() + 10 * 24 * 3600 * 1000);
 			},
-			test() {
-				console.log('kasjd')
-			}
 		},
 	}
 </script>

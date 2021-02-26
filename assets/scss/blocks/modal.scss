@@ -1,0 +1,47 @@
+@import "../variables";
+@import "../mixins";
+
+.modal {
+
+	// Переопределения для vue-js-modal
+	.vm {
+
+		&--modal {
+			box-shadow: $card-shadow;
+		}
+
+		&--overlay {
+			background: #000;
+			opacity: 0.6;
+		}
+	}
+}
+
+.modal__close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	padding: 15px;
+	background: $light;
+	border: none;
+	cursor: pointer;
+	margin: -15px -15px 0 0;
+	outline: none;
+
+	&:hover, &:focus {
+		path {
+			stroke: $accent-color
+		}
+	}
+}
+
+.modal__content {
+	position: relative;
+	padding: 25px 40px;
+}
+
+.modal__title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 30px;
+}

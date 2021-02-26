@@ -24,7 +24,7 @@ html {
 }
 
 *::selection {
-	background: $accent-alt-light;
+	background: $accent-light;
 }
 
 img {
@@ -157,6 +157,7 @@ textarea {
 	}
 }
 
+// Переопределения для vue2-datepicker
 .mx-datepicker {
 	position: unset;
 	display: unset;
@@ -173,7 +174,7 @@ textarea {
 		display: none;
 	}
 	.mx-datepicker-popup {
-		top: 68px !important;
+		//top: 68px !important;
 	}
 }
 .mx-calendar-content .cell.disabled {
