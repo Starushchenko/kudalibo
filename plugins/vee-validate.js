@@ -10,3 +10,11 @@ extend("alpha", {
 	...alpha,
 	message: "Это поле может содержать только буквы"
 });
+
+// Доработать проверку даты
+extend('isAfterNow', {
+	message: 'Выберите время позднее текущего',
+	validate: (value) => {
+		return (value >= new Date())
+	},
+});

@@ -23,6 +23,11 @@
 		box-shadow: none;
 	}
 
+	&:disabled {
+		box-shadow: $pressed-btn-shadow;
+		background: $text-gray-dark;
+	}
+
 	&--dark {
 		background: $main-text-color;
 		box-shadow: $dark-btn-shadow;
