@@ -45,3 +45,24 @@
 	font-weight: 700;
 	margin-bottom: 30px;
 }
+
+.modal__text {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 20px;
+
+	a {
+		color: $accent-color;
+		@include underline($accent-color);
+		transition: 0.3s;
+
+		&:hover, &:focus {
+			color: $accent-alt-color;
+			@include underline($accent-alt-color)
+		}
+	}
+
+	&--centered {
+		text-align: center;
+	}
+}

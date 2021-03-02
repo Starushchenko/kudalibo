@@ -1,13 +1,13 @@
 <template>
-	<modal name="authModal" height="auto" width="450px" :scrollable="true">
+	<modal name="resorePassModal" height="auto" width="450px" :scrollable="true">
 		<div class="modal__content">
-			<button slot="top-right" class="modal__close" @click="$modal.hide('authModal')">
+			<button slot="top-right" class="modal__close" @click="$modal.hide('resorePassModal')">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M5 5L12 12M12 12L19 19M12 12L19 5M12 12L5 19" stroke="#333333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</button>
 			
-			<h2 class="modal__title">Войти в личный кабинет</h2>
+			<h2 class="modal__title">Восстановление пароля</h2>
 			
 			<form action="" class="form">
 				<fieldset class="form__set">
@@ -28,7 +28,7 @@
 			</form>
 			
 			<p class="modal__text modal__text--centered">
-				Забыли пароль ? <a @click.prevent="showRestorePass">Восстановить</a>
+				Забыли пароль ? <a href="javascript:void(0);" @click.prevent="$modal.show('restorePassModal')">Восстановить</a>
 			</p>
 		</div>
 	</modal>
@@ -42,12 +42,6 @@
 				email: 'alexeipetrov21@yandex.ru',
 				password: 'T%Y-Xl0-Gu8-@3R'
 			}
-		}),
-		methods: {
-			showRestorePass: function() {
-				this.$modal.hide('authModal');
-				this.$modal.show('restorePassModal');
-			}
-		}
+		})
 	}
 </script>

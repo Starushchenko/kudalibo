@@ -1,6 +1,12 @@
 <template>
   <transition name="layout" mode="out-in">
     <Nuxt />
+    
+    <!--	Глобальные модальные окна приложения	-->
+    <GlobalModals/>
+  
+    <!-- Контейнер для нотификаций -->
+    <Notification/>
   </transition>
 </template>
 

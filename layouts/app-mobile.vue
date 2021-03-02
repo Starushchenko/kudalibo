@@ -3,6 +3,12 @@
     <div>
       <h1>мобиле</h1>
       <Nuxt />
+  
+      <!--	Глобальные модальные окна приложения	-->
+      <GlobalModals/>
+  
+      <!-- Контейнер для нотификаций -->
+      <Notification/>
     </div>
   </transition>
 </template>

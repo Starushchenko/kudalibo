@@ -48,6 +48,7 @@ export default {
     "~/plugins/vee-validate",
     "~/plugins/vuedraggable",
     "~/plugins/vue2-datepicker",
+    { src: '~/plugins/vue-notification', mode: 'client' },
     { src: '~/plugins/vue-js-modal', mode: 'client' }
   ],
 

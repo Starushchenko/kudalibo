@@ -356,9 +356,6 @@
 			<!--	Тёмный фон для выделения меню	-->
 			<div class="app__back" :class="{'app__back--active': modalBackShown}"></div>
 		</div>
-		
-		<!--	Глобальные модальные окна приложения	-->
-		<GlobalModals/>
 	</div>
 </template>
 
@@ -423,11 +420,13 @@
 			]
 		}),
 		methods: {
+			
 			// Показать/скрыть дополнительные опции заказа
 			switchOrderSettings: function () {
 				this.settingsShown = (this.settingsShown !== true);
 				this.modalBackShown = (this.modalBackShown !== true);
 			},
+			
 			// Добавить точку к маршруту
 			addPoint: function () {
 				this.orderData.points.push({
@@ -436,11 +435,26 @@
 				});
 
 				(this.orderData.points.length > 2) ? this.$refs.orderForm.classList.add('points-draggable') : this.$refs.orderForm.classList.remove('points-draggable');
+				
+				this.$notify({
+					// Title (will be wrapped in div.notification-title)
+					title: 'This is the <em>title</em>',
+					// Content (will be wrapped in div.notification-content)
+					text: 'This is some <b>content</b>',
+					// Class that will be assigned to the notification
+					type: 'alert',
+					// Time (in ms) to keep the notification on screen
+					duration: 3000,
+					// Time (in ms) to show / hide notifications
+					speed: 500,
+				})
 			},
+			
 			// Удалить точку из маршрута
 			removePoint(index) {
 				this.orderData.points.splice(index, 1);
 			},
+			
 			// Отключение datepicker'а для прошедших дат и для дат больше 10 дней
 			disabledBeforeTodayAndAfterAWeek(date) {
 				const today = new Date();
@@ -448,6 +462,7 @@
 
 				return date < today || date > new Date(today.getTime() + 10 * 24 * 3600 * 1000);
 			},
+			
 			// Заглушка для обработчика форм заказа
 			onSubmit() {
 				this.$refs.orderFormValidator.validate().then(success => {
