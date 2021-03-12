@@ -38,6 +38,10 @@
 .modal__content {
 	position: relative;
 	padding: 25px 40px;
+
+  .social-auth {
+    margin: 0 -40px 30px;
+  }
 }
 
 .modal__title {
@@ -51,10 +55,15 @@
 	font-weight: 500;
 	margin-bottom: 20px;
 
+  .modal__title + & {
+    margin-top: -15px;
+  }
+
 	a {
 		color: $accent-color;
 		@include underline($accent-color);
 		transition: 0.3s;
+    cursor: pointer;
 
 		&:hover, &:focus {
 			color: $accent-alt-color;

@@ -48,6 +48,7 @@ export default {
     "~/plugins/vee-validate",
     "~/plugins/vuedraggable",
     "~/plugins/vue2-datepicker",
+    "~/plugins/v-mask",
     { src: '~/plugins/vue-notification', mode: 'client' },
     { src: '~/plugins/vue-js-modal', mode: 'client' }
   ],
@@ -57,6 +58,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/device',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -83,7 +85,7 @@ export default {
   axios: {},
 
 	router: {
-		middleware: ['mobile']
+		middleware: []
 	},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

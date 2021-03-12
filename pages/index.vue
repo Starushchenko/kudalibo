@@ -147,7 +147,7 @@
 								<ValidationProvider v-slot="{ errors }" rules="required" slim>
 									<div class="form__group" :class="{'form__group--invalid': errors.length > 0}">
 										<label for="order-tel">Номер телефона</label>
-										<input type="text" name="order-tel" id="order-tel" v-model="orderData.phone" placeholder="+7 989 721 64 27">
+										<input type="text" name="order-tel" id="order-tel" v-model="orderData.phone" v-mask="'+7 ### ### ## ##'" placeholder="+7 989 721 64 27">
 										<span class="form__group-error">{{ errors[0] }}</span>
 									</div>
 								</ValidationProvider>
@@ -227,7 +227,7 @@
 								<ValidationProvider v-slot="{ errors }" rules="required" slim>
 									<div class="form__group" :class="{'form__group--invalid': errors.length > 0}">
 										<label for="order-tel">Номер телефона</label>
-										<input type="text" name="order-tel" id="order-tel" v-model="orderData.phone" placeholder="+7 989 721 64 27">
+										<input type="text" name="order-tel" id="order-tel" v-model="orderData.phone" v-mask="'+7 ### ### ## ##'" placeholder="+7 989 721 64 27">
 										<span class="form__group-error">{{ errors[0] }}</span>
 									</div>
 								</ValidationProvider>
@@ -365,7 +365,7 @@
 	import DatePicker from 'vue2-datepicker';
 
 	export default {
-		layout: ({isMobile}) => isMobile ? 'app-mobile' : 'app',
+		layout: 'app',
 		components: {
 			draggable,
 			DatePicker,
@@ -375,8 +375,6 @@
 		data: () => ({
 			// Проверка авторизации пользователя
 			authorized: false,
-
-			value: 'asd',
 
 			// Данные заказа
 			orderData: {

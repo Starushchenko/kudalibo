@@ -7,6 +7,8 @@
   
     <!-- Контейнер для нотификаций -->
     <Notification/>
+    
+    <div class="overlay"></div>
   </transition>
 </template>
 

@@ -41,6 +41,11 @@
 		color: $accent-color;
 	}
 
+  &--alt {
+    background: $accent-alt-color;
+    box-shadow: none;
+  }
+
 	&--no-text {
 		font-size: 0;
 

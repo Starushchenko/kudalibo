@@ -1,7 +1,7 @@
 <template>
-	<modal name="authModal" height="auto" width="450px" :scrollable="true">
+	<modal name="signUpModal" height="auto" width="450px" :scrollable="true">
 		<div class="modal__content">
-			<button slot="top-right" class="modal__close" @click="$modal.hide('authModal')">
+			<button slot="top-right" class="modal__close" @click="$modal.hide('signUpModal')">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M5 5L12 12M12 12L19 19M12 12L19 5M12 12L5 19" stroke="#333333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
@@ -28,26 +28,20 @@
 			</form>
 			
 			<p class="modal__text modal__text--centered">
-				Забыли пароль ? <a @click.prevent="showRestorePass">Восстановить</a>
+				Забыли пароль ? <a @click.prevent="$modal.hide('authModal'); $emit('showRestorePass')">Восстановить</a>
 			</p>
+      
+      <SocialAuth />
+      
+      <Btn class="btn btn--alt form__btn" type="button" @click.native="">
+        <span slot="text">Зарегистрироваться</span>
+      </Btn>
 		</div>
 	</modal>
 </template>
 
 <script>
 	export default {
-		data: () => ({
-			// Тестовые данные пользователя
-			userData: {
-				email: 'alexeipetrov21@yandex.ru',
-				password: 'T%Y-Xl0-Gu8-@3R'
-			}
-		}),
-		methods: {
-			showRestorePass: function() {
-				this.$modal.hide('authModal');
-				this.$modal.show('restorePassModal');
-			}
-		}
+    props: ['showModal', 'showNewModal', 'userData'],
 	}
 </script>

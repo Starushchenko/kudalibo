@@ -36,10 +36,10 @@
 		},
 		methods: {
 			saveClosed() {
-				/*this.$cookies.set('mobapp-banner-closed', 'true', {
+				this.$cookies.set('mobapp-banner-closed', 'true', {
 					path: '/',
 					maxAge: 60 * 60 * 24 * 7
-				});*/
+				});
 				this.bannerClosedManually = true;
 			},
 		},

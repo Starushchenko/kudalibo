@@ -274,11 +274,16 @@
 		&:hover, &:focus {
 			box-shadow: $pressed-btn-shadow-light;
 		}
+
 	}
 
 	&__btn.btn--white {
 		border: 1px solid $gray-3;
 	}
+
+  &__btn.btn--alt{
+    border: 1px solid $accent-alt-color;
+  }
 
 	&__submit {
 		width: 100%;
@@ -452,8 +457,13 @@
 	border: none;
 	cursor: pointer;
 	z-index: 2;
+  outline: none;
 
 	background: url("~assets/img/eye-closed.svg") center no-repeat;
+
+  &.active {
+    background: url("~assets/img/eye-opened.svg") center no-repeat;
+  }
 }
 
 .form__group-error {
