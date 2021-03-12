@@ -1,0 +1,31 @@
+@import "../variables";
+
+.app {
+  .vue-scrollbar {
+
+  }
+
+  .vue-scrollbar__wrapper {
+    margin: unset;
+  }
+
+  .vue-scrollbar__scrollbar-vertical, .vue-scrollbar__scrollbar-horizontal {
+    width: 5px;
+    z-index: 10;
+    border-radius: 3px;
+  }
+
+  .vue-scrollbar__scrollbar-vertical .scrollbar, .vue-scrollbar__scrollbar-horizontal .scrollbar {
+    background: $accent-color;
+    border-radius: 5px;
+  }
+
+  .vue-scrollbar__scrollbar-vertical .scrollbar {
+    width: 5px;
+  }
+
+  .vue-scrollbar__scrollbar-horizontal .scrollbar {
+    height: 5px;
+  }
+}
+

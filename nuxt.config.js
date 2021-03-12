@@ -49,6 +49,7 @@ export default {
     "~/plugins/vuedraggable",
     "~/plugins/vue2-datepicker",
     "~/plugins/v-mask",
+    "~/plugins/vue2-scrollbar",
     { src: '~/plugins/vue-notification', mode: 'client' },
     { src: '~/plugins/vue-js-modal', mode: 'client' }
   ],

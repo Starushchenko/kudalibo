@@ -1,9 +1,14 @@
 import { extend } from "vee-validate";
-import { required, alpha } from "vee-validate/dist/rules";
+import { required, alpha, email } from "vee-validate/dist/rules";
 
 extend("required", {
 	...required,
 	message: "Это поле обязательно"
+});
+
+extend("email", {
+  ...required,
+  message: "Введите корректный email"
 });
 
 extend("alpha", {

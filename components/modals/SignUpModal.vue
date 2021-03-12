@@ -42,6 +42,6 @@
 
 <script>
 	export default {
-    props: ['showModal', 'showNewModal', 'userData'],
+    props: ['hideModal', 'showModal', 'userData'],
 	}
 </script>

@@ -8,6 +8,8 @@
 
 	&__sidebar {
 		max-width: 450px;
+    min-width: 450px;
+    min-height: 100vh;
 		flex-grow: 1;
 		padding: 20px;
 		position: relative;
@@ -34,7 +36,6 @@
 		.form {
 			flex-grow: 1;
 			margin-bottom: 30px;
-      overflow: hidden;
       padding-top: 18px;
       margin-top: -18px;
 		}
@@ -112,6 +113,7 @@
 		bottom: -30px;
 		width: 450px;
 		padding: 20px;
+    margin-top: 0 !important;
 		//background: rgba(0, 0, 0, 0.3);
 		border-left: 1px solid rgba(255, 255, 255, 0.5);
 

@@ -2,13 +2,16 @@
 	<client-only>
 		<div class="modal">
 			<!-- Авторизация пользователя -->
-			<AuthModal @showModal="showModal" @showNewModal="showNewModal" :userData="userData"/>
+			<AuthModal @hideModal="hideModal" @showModal="showModal" :userData="userData"/>
       
       <!-- Восстановление пароля -->
-      <SignUpModal @showModal="showModal" @showNewModal="showNewModal" :userData="userData"/>
+      <SignUpModal @hideModal="hideModal" @showModal="showModal" :userData="userData"/>
 			
 			<!-- Восстановление пароля -->
-			<RestorePassModal @showModal="showModal" @showNewModal="showNewModal" @restoreAgain="restoreAgain" :userData="userData"/>
+			<RestorePassModal @hideModal="hideModal" @showModal="showModal" @restoreAgain="restoreAgain" :userData="userData"/>
+      
+      <!-- Восстановление пароля -->
+      <RestorePassModal @hideModal="hideModal" @showModal="showModal" @restoreAgain="restoreAgain" :userData="userData"/>
 		</div>
 	</client-only>
 </template>
@@ -16,25 +19,19 @@
 <script>
 	export default {
 		data: () => ({
-			// Тестовые данные пользователя
-			userData: {
-				email: 'alexeipetrov21@yandex.ru',
-				password: 'T%Y-Xl0-Gu8-@3R',
-        newPassword: '',
-        confirmPassword: '',
-        restoreCode: '',
-        showPassword: false,
-        showNewPassword: false,
-        showConfirmPassword: false
-			}
+  
 		}),
+    computed: {
+      userData () {
+        return this.$store.state.user.userData
+      }
+    },
     methods: {
       showModal: function(modalName) {
         this.$modal.show(modalName);
       },
-      showNewModal: function(currentModalName, neededModalName) {
-        this.$modal.hide(currentModalName);
-        this.$modal.show(neededModalName);
+      hideModal: function(modalName) {
+        this.$modal.hide(modalName);
       },
       restoreAgain: function () {
         this.userData.restoreCode = '';

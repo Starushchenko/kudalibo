@@ -293,6 +293,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+    cursor: pointer;
 
 		input {
 			display: none;
@@ -459,10 +460,10 @@
 	z-index: 2;
   outline: none;
 
-	background: url("~assets/img/eye-closed.svg") center no-repeat;
+	background: #fff url("~assets/img/eye-closed.svg") center no-repeat;
 
   &.active {
-    background: url("~assets/img/eye-opened.svg") center no-repeat;
+    background: #fff url("~assets/img/eye-opened.svg") center no-repeat;
   }
 }
 

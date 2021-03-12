@@ -59,6 +59,16 @@
   })
 ```
 
+## Добавлен кастомный скроллбар [vue2-scrollbar](https://www.npmjs.com/package/vue2-scrollbar)
+Используется vue2-scrollbar, подключено на главной странице, но пока не рекомендуется использовать, так как плохо 
+срабатывает перечёт высоты страницы после обновления форм.
+
+```html
+<vue-scrollbar ref="scrollbar">
+  <div>Some scrolling content</div>
+</vue-scrollbar>
+```
+
 ## Команды
 
 ```bash

@@ -13,20 +13,18 @@
         . Введите код в поле ниже
       </p>
       
-      <ValidationObserver ref="orderFormValidator" slim>
-        <form action="" class="form">
-          <fieldset class="form__set">
-            <div class="form__group">
-              <label for="restoreCode">Код</label>
-              <input type="text" name="restoreCode" id="restoreCode" placeholder="_ _ _   _ _ _" v-mask="'### ###'" v-model="userData.restoreCode">
-            </div>
-            
-            <Btn class="btn form__btn" type="button" @click.native="">
-              <span slot="text">Восстановить пароль</span>
-            </Btn>
-          </fieldset>
-        </form>
-      </ValidationObserver>
+      <form action="" class="form">
+        <fieldset class="form__set">
+          <div class="form__group">
+            <label for="restoreCode">Код</label>
+            <input type="text" name="restoreCode" id="restoreCode" placeholder="_ _ _   _ _ _" v-mask="'### ###'"  v-model="userData.restoreCode">
+          </div>
+          
+          <Btn class="btn form__btn" type="button" @click.native="">
+            <span slot="text">Восстановить пароль</span>
+          </Btn>
+        </fieldset>
+      </form>
       
       <p class="modal__text modal__text--centered">
         Код не пришёл ? <a href="javascript:void(0);" @click.prevent="$emit('restoreAgain')">Отправить повторно</a>
@@ -37,6 +35,6 @@
 
 <script>
   export default {
-    props: ['hideModal', 'showModal', 'restoreAgain', 'userData'],
+    props: ['hideModal', 'showModal', 'userData'],
   }
 </script>
