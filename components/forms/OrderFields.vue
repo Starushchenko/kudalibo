@@ -10,7 +10,7 @@
               <span>Точка маршрута</span>
             </label>
             <input aria-label="Адрес" type="text" :name="'point' + (index + 1)" :id="'point' + (index + 1)" :data-coords="point.coords" v-model="point.name" placeholder="Введите адрес">
-            <span class="form__group-error">{{ errors[0] }}</span>
+            <span v-if="errors[0]" class="form__group-error">{{ errors[0] }}</span>
             <div class="form__point-btns">
               <button class="form__drag-btn js_point-drag" type="button" title="Зажмите и перетаскивайте">
                 Зажмите и перетаскивайте
@@ -36,14 +36,14 @@
         <div class="form__group form__group--date" :class="{'form__group--invalid': errors.length > 0}">
           <label for="order-date">Дата / время поездки</label>
           <date-picker :append-to-body="false" :default-value="new Date()" title-format="DD.MM.YYYY" :clearable="false" :confirm="true" confirm-text="Подтвердить" :disabled-date="disabledBeforeTodayAndAfterAWeek" :minute-step="5" format="DD.MM.YYYY HH:mm" v-model="orderData.date" name="order-date" id="order-date" type="datetime" placeholder="Выберите дату и время поездки"></date-picker>
-          <span class="form__group-error">{{ errors[0] }}</span>
+          <span v-if="errors[0]" class="form__group-error">{{ errors[0] }}</span>
         </div>
       </ValidationProvider>
-      <ValidationProvider v-slot="{ errors }" rules="required" slim>
+      <ValidationProvider v-slot="{ errors }" rules="required|phoneLength" mode="eager" slim>
         <div class="form__group" :class="{'form__group--invalid': errors.length > 0}">
           <label for="order-tel">Номер телефона</label>
           <input type="text" name="order-tel" id="order-tel" v-model="orderData.phone" v-mask="'+7 ### ### ## ##'" placeholder="+7 989 721 64 27">
-          <span class="form__group-error">{{ errors[0] }}</span>
+          <span v-if="errors[0]" class="form__group-error">{{ errors[0] }}</span>
         </div>
       </ValidationProvider>
     

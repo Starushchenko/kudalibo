@@ -49,9 +49,9 @@ export default {
     "~/plugins/vuedraggable",
     "~/plugins/vue2-datepicker",
     "~/plugins/v-mask",
-    "~/plugins/vue2-scrollbar",
     { src: '~/plugins/vue-notification', mode: 'client' },
-    { src: '~/plugins/vue-js-modal', mode: 'client' }
+    { src: '~/plugins/vue-js-modal', mode: 'client' },
+    { src: '~plugins/svg4everybody.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,6 +69,7 @@ export default {
     '@aceforth/nuxt-optimized-images',
     'nuxt-leaflet',
     'cookie-universal-nuxt',
+    '@nuxtjs/svg-sprite',
   ],
 
   optimizedImages: {
@@ -80,6 +81,10 @@ export default {
       preset: 'default',
       quality: 100,
     },
+  },
+
+  svgSprite: {
+    input: '~/assets/img/sprite/'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

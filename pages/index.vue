@@ -244,7 +244,6 @@
   import {ValidationProvider, ValidationObserver} from "vee-validate";
   import draggable from "vuedraggable";
   import DatePicker from 'vue2-datepicker';
-  import VueScrollbar from 'vue2-scrollbar';
   
   export default {
     layout: 'app',
@@ -253,7 +252,6 @@
       DatePicker,
       ValidationProvider,
       ValidationObserver,
-      VueScrollbar
     },
     data: () => ({
       // Данные заказа

@@ -10,6 +10,7 @@
 - **Модальные окна** - [vue-js-modal](https://euvl.github.io/vue-js-modal/)
 - **Нотификации** - [vue-notification](https://github.com/euvl/vue-notification)
 - **Маски полей ввода** - [v-mask](https://www.npmjs.com/package/v-mask)
+- **Svg-спрайты** - [@nuxtjs/svg-sprite](https://www.npmjs.com/package/@nuxtjs/svg-sprite)
 
 ##Подключена библиотека проверки устройства **[@nuxtjs/device](https://www.npmjs.com/package/@nuxtjs/device)**
 
@@ -59,15 +60,16 @@
   })
 ```
 
-## Добавлен кастомный скроллбар [vue2-scrollbar](https://www.npmjs.com/package/vue2-scrollbar)
-Используется vue2-scrollbar, подключено на главной странице, но пока не рекомендуется использовать, так как плохо 
-срабатывает перечёт высоты страницы после обновления форм.
+## SVG-спрайты
+Для использования svg инлайново рекомендуется использовать svg-спрайты. Все иконки складываются в директорию 
+assets/img/sprite и в компонентах используются как:
 
 ```html
-<vue-scrollbar ref="scrollbar">
-  <div>Some scrolling content</div>
-</vue-scrollbar>
+  <svg-icon name="close-dark" width="24" height="24"/>
 ```
+
+В данном случае "close-dark" - иконка **assets/img/sprite/close-dark.svg**.
+Для поддержки спрайтов на IE подключена библиотека svg4everybody.js
 
 ## Команды
 

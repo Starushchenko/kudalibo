@@ -5,6 +5,7 @@ $primary-color: #F2994A; // need for ~vue2-datepicker
 
 // Global project vendors
 @import '_fonts';
+@import '_icon';
 @import '_mixins';
 @import '_reset';
 @import '_scaffolding';
@@ -19,6 +20,6 @@ $primary-color: #F2994A; // need for ~vue2-datepicker
 @import 'blocks/form';
 @import 'blocks/header';
 @import 'blocks/modal';
+@import 'blocks/order-info-card';
 @import 'blocks/tab-radios';
 @import 'blocks/user-buttons';
-@import 'blocks/vue-scrollbar';

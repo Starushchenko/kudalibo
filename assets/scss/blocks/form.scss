@@ -131,6 +131,16 @@
 				opacity: 1;
 				transform: none;
 			}
+
+      &.form__group--check-invalid {
+        .form__group-error {
+          display: none;
+        }
+        &:after {
+          right: 60px;
+          bottom: 10px;
+        }
+      }
 		}
 
 		label {
@@ -161,6 +171,7 @@
 			a {
 				color: $main-text-color;
 				text-decoration: underline;
+        margin-left: 5px;
 			}
 
 			&::before {
@@ -462,7 +473,7 @@
 
 	background: #fff url("~assets/img/eye-closed.svg") center no-repeat;
 
-  &.active {
+  input[type="text"] + & {
     background: #fff url("~assets/img/eye-opened.svg") center no-repeat;
   }
 }
