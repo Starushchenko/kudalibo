@@ -215,12 +215,22 @@
         </client-only>
       </div>
       
-      <div class="order-info-card"></div>
+      <div v-if="routeLength && tripDuration" class="order-info-card">
+        <div class="order-info-card__item">
+          <span class="order-info-card__prop">Длина маршрута — </span>
+          <span class="order-info-card__value">{{ routeLength }}</span>
+        </div>
+        <div class="order-info-card__item">
+          <span class="order-info-card__prop">Время в пути без пробок ≈ </span>
+          <span class="order-info-card__value">{{ tripDuration }}</span>
+        </div>
+      </div>
+      
       <!--	Баннер мобильного приложения	-->
       <MobAppBanner class="app__banner"/>
-      
+  
+      <!--	Полноэкранное меню по приложению	-->
       <transition name="fadeToRight">
-        <!--	Полноэкранное меню по приложению	-->
         <SiteMenu/>
       </transition>
       
@@ -235,7 +245,6 @@
   import draggable from "vuedraggable";
   import DatePicker from 'vue2-datepicker';
   import VueScrollbar from 'vue2-scrollbar';
-  import {mapMutations} from 'vuex'
   
   export default {
     layout: 'app',
@@ -289,9 +298,15 @@
       ]
     }),
     computed: {
-      userData () {
+      userData() {
         return this.$store.state.user.userData
-      }
+      },
+      routeLength() {
+        return '48 км'
+      },
+      tripDuration() {
+        return '51 мин'
+      },
     },
     methods: {
   
@@ -301,14 +316,31 @@
         this.modalBackShown = (this.modalBackShown !== true);
       },
       
+      toggleAuthorize: function () {
+        this.$store.commit('user/TOGGLE_AUTHORIZED');
+        this.$notify({
+          title: 'Выход пользователя',
+          text: 'Вы вышли из личного кабинета',
+          type: 'alert',
+          duration: 2000,
+          speed: 500,
+        });
+      },
+      
       // Заглушка для обработчика форм заказа
       onOrderSubmit() {
         this.$refs.orderFormValidator.validate().then(success => {
           if (!success) {
             return;
           }
-          
-          alert('Форма отправлена (тестовый режим)');
+  
+          this.$notify({
+            title: 'Форма',
+            text: 'Форма отправлена (тестовый режим)',
+            type: 'success',
+            duration: 2000,
+            speed: 500,
+          });
           
           // Сброс значений формы к дефолтным
           this.orderData = {
@@ -340,10 +372,6 @@
           });
         });
       },
-      
-      ...mapMutations({
-        toggleAuthorize: 'user/toggleAuthorize'
-      })
     },
   }
 </script>

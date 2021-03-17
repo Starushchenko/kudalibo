@@ -1,38 +1,40 @@
 <template>
-  <modal name="restorePassModal" height="auto" width="450px" :scrollable="true">
+  <modal name="restoreCodeModal" height="auto" width="450px" :scrollable="true">
     <div class="modal__content">
-      <button slot="top-right" class="modal__close" @click="$modal.hide('restorePassModal')">
+      <button slot="top-right" class="modal__close" @click="$modal.hide('restoreCodeModal')">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 5L12 12M12 12L19 19M12 12L19 5M12 12L5 19" stroke="#333333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       
       <h2 class="modal__title">Восстановление пароля</h2>
+      <p class="modal__text">Код восстановления отправлен в смс на номер
+        <nobr>{{ userData.tel }}</nobr>
+        . Введите код в поле ниже
+      </p>
   
       <ValidationObserver ref="restoreChecker" slim>
-        <form @submit.prevent="onRestorePassSubmit" ref="restorePassForm" action="" class="form">
+        <form @submit.prevent="onRestoreCodeSubmit" ref="restorePassForm" action="" class="form">
           <fieldset class="form__set">
   
-            <ValidationProvider v-slot="{ errors }" rules="required|phoneLength" mode="eager" slim>
+            <ValidationProvider v-slot="{ errors }" rules="required|verificationCode" mode="eager" slim>
               <div class="form__group" :class="{'form__group--invalid': errors.length > 0}">
-                <label for="order-tel">Номер телефона</label>
-                <input type="text" name="order-tel" id="order-tel" v-model="changeTel" v-mask="'+7 ### ### ## ##'" placeholder="+7 989 721 64 27">
+                <label for="restoreCode">Код</label>
+                <input type="text" name="restoreCode" id="restoreCode" v-model="restoreCode" placeholder="_ _ _   _ _ _" v-mask="'### ###'">
                 <span v-if="errors[0]" class="form__group-error">{{ errors[0] }}</span>
               </div>
             </ValidationProvider>
-  
+            
             <Btn class="btn form__btn" type="submit">
-              <span slot="text">Отправить код восстановления</span>
+              <span slot="text">Восстановить пароль</span>
             </Btn>
           </fieldset>
         </form>
       </ValidationObserver>
       
       <p class="modal__text modal__text--centered">
-        Вспомнили пароль ? <a href="javascript:void(0);" @click.prevent="$modal.hide('restorePassModal'); $modal.show('authModal')">Войти с паролем</a>
+        Код не пришёл ? <a href="javascript:void(0);" @click.prevent="$emit('restoreAgain')">Отправить повторно</a>
       </p>
-      
-      <SocialAuth/>
     </div>
   </modal>
 </template>
@@ -41,6 +43,7 @@
   import {ValidationProvider, ValidationObserver} from "vee-validate";
   
   export default {
+    props: ['restoreAgain'],
     components: {
       ValidationProvider,
       ValidationObserver,
@@ -49,25 +52,25 @@
       userData () {
         return this.$store.state.user.userData
       },
-      changeTel: {
+      restoreCode: {
         get () {
-          return this.$store.state.user.userData.tel
+          return this.$store.state.user.userData.restoreCode
         },
         set (value) {
-          this.$store.commit('user/SET_USER_TEL', value)
+          this.$store.commit('user/SET_RESTORE_CODE', value)
         }
       },
     },
     methods: {
       // Заглушка для обработчика формы восстановления пароля
-      onRestorePassSubmit() {
+      onRestoreCodeSubmit() {
         this.$refs.restoreChecker.validate().then(success => {
           if (!success) {
             return;
           }
   
-          this.$modal.hide('restorePassModal');
-          this.$modal.show('restoreCodeModal');
+          this.$modal.hide('restoreCodeModal');
+          this.$modal.show('newPassModal');
         });
       },
     }
