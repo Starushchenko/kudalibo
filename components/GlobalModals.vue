@@ -16,7 +16,7 @@
       <PasswordChangedModal />
   
       <!-- Заказ оформлен, ожидание водителя -->
-      <OrderCreatedModal/>
+      <DriverSearchingModal/>
     </div>
   </client-only>
 </template>

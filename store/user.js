@@ -1,6 +1,6 @@
 export const state = () => ({
   userData: {
-    authorized: true,
+    authorized: false,
     email: 'alexeipetrov21@yandex.ru',
     tel: '+79782818265',
     name: 'Василий Соколов',

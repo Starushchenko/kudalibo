@@ -305,13 +305,7 @@
             return;
           }
   
-          this.$notify({
-            title: 'Форма',
-            text: 'Форма отправлена (тестовый режим)',
-            type: 'success',
-            duration: 2000,
-            speed: 500,
-          });
+          this.$modal.show('driverSearchingModal');
           
           // Сброс значений формы к дефолтным
           this.orderData = {
