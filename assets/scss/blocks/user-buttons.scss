@@ -58,23 +58,12 @@
 		border-bottom: none;
 	}
 
-	path {
-		transition: 0.3s;
-	}
-
 	svg {
-		margin-right: 10px;
+		transition: 0.3s;
+    margin-right: 10px;
 	}
 
 	&:hover {
 		color: $accent-color;
-
-		path[stroke] {
-			stroke: $accent-color
-		}
-
-		path[fill] {
-			fill: $accent-color
-		}
 	}
 }

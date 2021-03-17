@@ -3,9 +3,7 @@
 	<transition name="hideToRight">
 		<div v-if="!bannerClosed && !bannerClosedManually" class="mobapp-banner">
 			<a class="mobapp-banner__close" @click.prevent="saveClosed">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M5 5L12 12M12 12L19 19M12 12L19 5M12 12L5 19" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
+        <svg-icon name="close-dark" width="24" height="24"/>
 			</a>
 			<h3 class="mobapp-banner__title">В приложении комфортнее!</h3>
 			<p class="mobapp-banner__text">Скачайте удобное приложение Кудалибо в Play Маркет или App Store</p>
@@ -71,14 +69,15 @@
 		height: 25px;
 		background: $light;
 		z-index: 2;
-		
-		path {
+  
+		svg {
 			transition: 0.3s;
+      stroke: $main-text-color
 		}
 		
 		&:hover {
 			
-			path {
+			svg {
 				stroke: $accent-color
 			}
 		}

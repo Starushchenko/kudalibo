@@ -137,12 +137,14 @@
 
 		svg {
 			margin-left: 7px;
+      stroke: $light;
+      transition: 0.3s;
 		}
 
 		&:focus, &:hover {
 			color: $accent-color;
 
-			path {
+      svg {
 				stroke: $accent-color
 			}
 		}
