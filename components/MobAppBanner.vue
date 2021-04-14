@@ -58,6 +58,7 @@
 		background: $light;
 		padding: 20px 30px 20px 20px;
 		box-shadow: $card-shadow;
+    transition: .3s;
 	}
 	
 	.mobapp-banner__close {
@@ -119,4 +120,10 @@
 			box-shadow: none;
 		}
 	}
+  
+  @media (max-width: 1199px) {
+    .mobapp-banner {
+      display: none;
+    }
+  }
 </style>

@@ -4,12 +4,9 @@
   background: $light url("~assets/img/road-bg-accent.svg") left top / contain no-repeat;
   padding: 25px 32px;
   box-shadow: $card-shadow;
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 4;
   border-radius: 6px;
+  transition: .3s;
 }
 
 .order-info-card__item {

@@ -33,3 +33,15 @@
 	font-weight: 400;
 	margin-bottom: 20px;
 }
+
+@media (max-width: 1199px) {
+  .cookie-banner {
+    padding: 13px;
+  }
+  .cookie-banner__title {
+    font-size: 18px;
+  }
+  .cookie-banner__text {
+    font-size: 12px;
+  }
+}

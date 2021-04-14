@@ -154,7 +154,16 @@ textarea {
 		position: absolute;
 		right: -50px;
 		bottom: -80px;
+    transition: 0.3s;
+    animation: rotate 30s infinite linear;
 	}
+  @media (max-width: 1199px) {
+    .cookie-banner__image {
+      right: -30px;
+      bottom: -20px;
+      width: 80px;
+    }
+  }
 }
 
 // Переопределения для vue2-datepicker

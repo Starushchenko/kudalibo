@@ -34,6 +34,8 @@
 						<a href="#" class="site-menu__item-link">Политика конфиденциальности</a>
 					</li>
 				</ul>
+        
+        <Social class="site-menu__socials" />
 			</nav>
 			
 			<div class="site-menu__content-block">
@@ -67,8 +69,6 @@
 				</div>
 			</div>
 		</div>
-		
-		<Social class="site-menu__socials" />
 	</div>
 </template>
 
@@ -93,6 +93,8 @@
 		border-left: 1px solid rgba(255, 255, 255, .5);
 		background: rgba(0, 0, 0, .3);
 		color: $light;
+    overflow-y: auto;
+    @include scrollbar(5px, $accent-color);
 		
 		&__title {
 			color: $light;
@@ -170,5 +172,52 @@
 				margin-bottom: 18px;
 			}
 		}
+    
+    @media (max-width: 1439px) {
+      &__content-block {
+        max-width: calc(100% - 290px);
+      }
+      &__banners {
+        flex-direction: column;
+        max-width: 300px;
+      }
+    }
+    
+    @media (max-width: 1199px) {
+      padding: 30px 20px;
+      
+      &__block {
+        margin-right: 20px;
+      }
+      
+      &__title {
+        margin-bottom: 45px;
+      }
+      
+      &__block-content {
+        font-size: 14px;
+      }
+      
+      &__block-list {
+        margin-bottom: 25px;
+      }
+      
+      &__banners-left {
+        min-width: unset;
+        margin: 0;
+  
+        .image-link {
+          min-height: 60px;
+          
+          span {
+            font-size: 18px;
+          }
+          
+          img {
+            object-fit: cover;
+          }
+        }
+      }
+    }
 	}
 </style>

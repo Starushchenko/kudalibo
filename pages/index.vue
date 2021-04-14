@@ -1,6 +1,6 @@
 <template>
-  <div class="app" :class="{'app--menu-open': menuOpened}">
-    <div class="app__sidebar" :class="{'app__sidebar--settings-open': settingsShown}">
+  <div class="app" :class="{'menu-open': menuOpened}">
+    <div class="app__sidebar" :class="{'settings-open': settingsShown}">
       <Logo descColor="white"/>
       
       <!-- Иконка меню -->
@@ -130,7 +130,6 @@
     
     <div class="app__body">
       <header class="header">
-        
         <!--	Меню по статическим страницам	-->
         <StaticMenu/>
         
@@ -187,7 +186,8 @@
           </l-map>
         </client-only>
       </div>
-      
+  
+      <!--	Информация о маршруте	-->
       <div v-if="routeLength && tripDuration" class="order-info-card">
         <div class="order-info-card__item">
           <span class="order-info-card__prop">Длина маршрута — </span>
@@ -262,7 +262,7 @@
       
       // Настройки карты
       zoom: 9,
-      center: {lat: 45.2500, lng: 34.506},
+      center: {lat: 44.607231, lng: 33.526968},
       waypoints: [
         {lat: 44.607231, lng: 33.526968},
         {lat: 45.036015, lng: 33.982251},
@@ -298,7 +298,7 @@
         });
       },
       
-      // Заглушка для обработчика форм заказа
+      // Заглушка для обработчика формы заказа
       onOrderSubmit() {
         this.$refs.orderFormValidator.validate().then(success => {
           if (!success) {
@@ -332,6 +332,7 @@
             otherPassengerPhone: '',
             message: '',
           };
+          // Обнуление формы
           this.$nextTick(() => {
             this.$refs.orderFormValidator.reset();
           });

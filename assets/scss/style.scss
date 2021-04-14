@@ -4,6 +4,7 @@ $primary-color: #F2994A; // need for ~vue2-datepicker
 @import '~vue2-datepicker/scss/index.scss';
 
 // Global project vendors
+@import '_animations';
 @import '_fonts';
 @import '_icon';
 @import '_mixins';
@@ -14,7 +15,6 @@ $primary-color: #F2994A; // need for ~vue2-datepicker
 
 // BEM-blocks styles used outside of components
 @import 'blocks/app';
-@import 'blocks/btn';
 @import 'blocks/burger';
 @import 'blocks/cookie-banner';
 @import 'blocks/form';

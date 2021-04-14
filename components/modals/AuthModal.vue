@@ -85,7 +85,7 @@
             title: 'Авторизация',
             text: 'Авторизация сэмулирована успешно',
             type: 'success',
-            duration: 3000,
+            duration: 2000,
             speed: 500,
           });
   

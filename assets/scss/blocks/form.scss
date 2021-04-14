@@ -11,7 +11,7 @@
 		color: $main-text-color;
 		width: 100%;
 		display: block;
-
+    background: $light;
 
 		/* Prevent autofill */
 		&:-webkit-autofill,
@@ -290,6 +290,10 @@
 
 	&__btn.btn--white {
 		border: 1px solid $gray-3;
+
+    svg {
+      fill: #fff
+    }
 	}
 
   &__btn.btn--alt{
